@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SpringMVCHelloController {
 
 	@RequestMapping("/")
-	public StringprintHelloWorld(Model model) {
+	public String printHelloWorld(Model model) {       // <-- handler method
 		
 		model.addAttribute("message", "Hello World!");
 		
-		return "HelloWorld";
+		return "HelloWorld";				//<- view name
 	}
 }

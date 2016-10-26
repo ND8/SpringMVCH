@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
+ 
+    <context:component-scan base-package="com.srccodes.spring.controller" />
+    <mvc:annotation-driven />
+     
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+</beans>
+
+<!-- //The above configuration file provides context information to the Spring container. 
+//'<context:component-scan>' enables the auto-detection of annotated components (like Controller, Service etc). 
+//So spring container will scan and load all the annotated component (e.g. SpringMVCHelloController) from the package 'com.srccodes.spring.controller' and it's subpackages.
+
+//'<mvc:annotation-driven>' specifies that we are using annotation based configuration.
+
+//ViewResolver provides a mapping between logical view name and actual view. 
+//It enables us to render models in UI without tying us to a specific view technology like JSPs, JSF, Velocity templates etc.
+ //Handler method defined in Controller class must resolve to a logical view name. In our case, 'printHelloWorld' handler method returns 'helloWorld' view name. 
+ //It gets resolved to the path 'WEB-INF/pages/helloWorld.jsp'
+ //by the 'InternalResourceViewResolver' by adding prefix '/WEB-INF/pages/' and suffix '.jsp' to the view name 'helloWorld'.-->
